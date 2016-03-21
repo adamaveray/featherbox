@@ -27,7 +27,10 @@
 		templateModal:	'<div class="modal-container"><div class="modal"></div></div>',
 		templateClose:	'<button class="modal__close" type="button">Close</button>',
 		selectorInsertContent:	'.modal',
-		selectorInsertClose:	'.modal'
+		selectorInsertClose:	'.modal',
+
+		// Operation
+		selectorLoadElements:	'img,iframe'
 	};
 
 	$.extend(Featherbox.prototype, {
@@ -44,6 +47,8 @@
 		handlerKeydown:	null,
 
 		create:	function(){
+			var _this	= this;
+
 			if(this.$modal){
 				// Clean up existing
 				this.close();
@@ -68,8 +73,14 @@
 			// Insert content
 			this.$modal.find(this.options.selectorInsertContent).append(this.$element);
 
+			// Monitor loading
+			this._waitForLoad(this.$modal, this.options.selectorLoadElements, function(){
+				window.setTimeout(function(){
+				_this._trigger('Load');
+				}, 1000);
+			});
+
 			// Monitor close events
-			var _this	= this;
 			window.setTimeout(function(){
 				_this._closeOnClick();
 				_this._closeOnEscape();
@@ -203,6 +214,30 @@
 			this.$element.trigger(event, params);
 		},
 
+		_waitForLoad:		function($element, selector, callback){
+			// Locate loadable elements
+			var $loadable	= this.$modal.find(selector)
+										 .add(this.$modal.filter(selector));	// Include container if loadable
+
+			var total		= $loadable.length,
+				progress	= 0;
+
+			if(total === 0){
+				// Nothing to load - trigger immediately
+				window.setTimeout(function(){
+					callback();
+				}, 0);
+			}
+
+			$loadable.on('load', function(){
+				progress++;
+
+				if(progress >= total){
+					// Loaded
+					callback();
+				}
+			});
+		},
 		_closeOnClick:		function(){
 			var _this	= this;
 

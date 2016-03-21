@@ -56,6 +56,8 @@ Options
 
 - **string `selectorInsertClose`:** [default: `.modal`]: A selector for the parent element in `templateModal` to append the modal close button to
 
+- **string `selectorLoadElements`:** [default: `img,iframe`]: A selector for elements within the modal to wait for a `load` event on before triggering `featherboxLoad`
+
 
 
 Events
@@ -63,6 +65,7 @@ Events
 
 All events will be passed the Featherbox instance as their custom parameter.
 
+- `featherboxLoad`:			Called when all loadable elements in modal (`<img>`, `<iframe>`, etc) have loaded, or immediately if none exist
 - `featherboxOpen`:			Called when opening the modal, _before_ showing
 - `featherboxOpenFinish`:	Called when opening the modal, _after_ showing
 - `featherboxClose`:			Called when closing the modal, _after_ hiding
