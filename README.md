@@ -10,7 +10,7 @@ Usage
 
 Load jQuery, the Featherbox script and stylesheet on the page. Then, in your script, call:
 
-```
+```js
 var $content	= $('...');	// The content for the modal
 
 $content.featherbox();	// Creates and opens the modal
@@ -20,7 +20,7 @@ $content.featherbox();	// Creates and opens the modal
 
 The plugin does not handle monitoring other elements for clicks. To open a modal on click, place the call to `$.featherbox` in a `click` handler:
 
-```
+```js
 var $content	= $('...');
 
 $('.link-selector').on('click', function(){
@@ -79,7 +79,7 @@ After calling `.featherbox()` on an element, the data value `featherbox` is set 
 
 ### Manually Opening
 
-```
+```js
 var featherbox	= $content.data('featherbox');
 
 featherbox.open();		// Transition in
@@ -89,7 +89,7 @@ featherbox.open(false);	// Open immediately (no transition)
 
 ### Manually Closing
 
-```
+```js
 var featherbox	= $content.data('featherbox');
 
 featherbox.close();		// Transition out
@@ -105,7 +105,7 @@ The default options are stored in `$.featherbox.defaults`.
 ### Removing Modal Completely
 
 
-```
+```js
 var featherbox	= $content.data('featherbox');
 
 featherbox.destroy();
