@@ -54,11 +54,9 @@
 				this.close();
 			}
 
-			if(!this.$template){
-				var $generator	= $(document.createElement('div'));
-				this.$templateModal	= $generator.html(this.options.templateModal).children();
-				this.$templateClose	= $generator.html(this.options.templateClose).children();
-				$generator = null;
+			if(!this.$templateModal){
+				this.$templateModal	= $($.parseHTML(this.options.templateModal));
+				this.$templateClose	= $($.parseHTML(this.options.templateClose));
 
 				if(this.options.extraClass !== null){
 					this.$templateModal.addClass(this.options.extraClass);
