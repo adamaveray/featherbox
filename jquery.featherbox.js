@@ -73,9 +73,7 @@
 
 			// Monitor loading
 			this._waitForLoad(this.$modal, this.options.selectorLoadElements, function(){
-				window.setTimeout(function(){
 				_this._trigger('Load');
-				}, 1000);
 			});
 
 			// Monitor close events
