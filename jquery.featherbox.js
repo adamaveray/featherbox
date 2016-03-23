@@ -1,4 +1,4 @@
-/*! Featherbox 0.3 | github.com/adamaveray/featherbox | Adam Averay | MIT */
+/*! Featherbox 0.4 | github.com/adamaveray/featherbox | Adam Averay | MIT */
 (function($){
 	var $window	= $(window),
 		$body	= $('body');
