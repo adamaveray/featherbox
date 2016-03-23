@@ -55,8 +55,8 @@
 			}
 
 			if(!this.$templateModal){
-				this.$templateModal	= $($.parseHTML(this.options.templateModal));
-				this.$templateClose	= $($.parseHTML(this.options.templateClose));
+				this.$templateModal	= $($.parseHTML($.trim(this.options.templateModal)));
+				this.$templateClose	= $($.parseHTML($.trim(this.options.templateClose)));
 
 				if(this.options.extraClass !== null){
 					this.$templateModal.addClass(this.options.extraClass);
