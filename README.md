@@ -4,6 +4,7 @@ Featherbox
 
 A lightweight, simple to customise modal/lightbox jQuery plugin with arguably aesthetically-pleasing default styles.
 
+[View Demo](https://adamaveray.github.io/featherbox/)
 
 Usage
 -----
