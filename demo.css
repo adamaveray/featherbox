@@ -1,0 +1,240 @@
+@charset "UTF-8";
+
+@import "jquery.featherbox.css";
+
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */img,legend{border:0}legend,td,th{padding:0}html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,optgroup,strong{font-weight:700}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{box-sizing:content-box;height:0}pre,textarea{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}input[type=search]{-webkit-appearance:textfield;box-sizing:content-box}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}table{border-collapse:collapse;border-spacing:0}
+
+/*! HTML5 Boilerplate v5.1.0 | MIT License | https://html5boilerplate.com/ */fieldset,hr{border:0;padding:0}html{color:#222;font-size:1em;line-height:1.4}::-moz-selection{background:#b3d4fc;text-shadow:none}::selection{background:#b3d4fc;text-shadow:none}hr{display:block;height:1px;border-top:1px solid #ccc;margin:1em 0}audio,canvas,iframe,img,svg,video{vertical-align:middle}fieldset{margin:0}textarea{resize:vertical}.browserupgrade{margin:.2em 0;background:#ccc;color:#000;padding:.2em 0}
+
+/* Basics */
+body {
+	padding:		1.2em;
+	font-family:	"Helvetica Neue", sans-serif;
+	text-align:		center;
+
+	/* Vertically center */
+	display:			flex;
+	flex-direction:		column;
+	justify-content:	center;
+	min-height:			100vh;
+	box-sizing:			border-box;
+}
+
+a {
+	text-decoration:	none;
+	color:				#5856d6;
+}
+	a:hover,
+	a:focus {
+		text-decoration:	underline;
+	}
+
+h2 {
+	font-weight:	normal;
+	text-transform:	uppercase;
+	font-size:		1.2em;
+}
+
+pre > code {
+	display:	block;
+	padding:	0.6em 0.8em;
+	border:		solid 1px #d9d9d9;
+	background:		#fcfcfc;
+	line-height:	1.5;
+}
+
+/* Layout */
+header,
+main,
+footer {
+	max-width:	500px;
+	margin:		0 auto;
+	box-sizing:	border-box;
+}
+
+.project-overview {
+}
+
+	.project-name,
+	.project-summary,
+	.project-features {
+		font-style:	italic;
+	}
+
+	.project-logo {
+		display:	block;
+		margin:		0 auto;
+		width:		150px;
+		height:		150px;
+	}
+
+	.project-name {
+		margin:			0.3em 0 0.3em 0;
+		font-weight:	lighter;
+		text-transform:	uppercase;
+		letter-spacing:	0.05em;
+	}
+
+	.project-summary {
+		margin:		0;
+		font-style:	italic;
+	}
+
+	.project-features {
+		margin:		0.6em 0 0 0;
+		padding:	0;
+		list-style:	none;
+		letter-spacing:	1em;
+	}
+		.project-feature {
+			position:		relative;
+			display:		inline-block;
+			vertical-align:	top;
+			letter-spacing:	0;
+		}
+			/* Checkbox */
+			.project-feature:before {
+				content:		"";
+				position:		relative;
+				display:		inline-block;
+				border:			solid 1px #000;
+				top:			0.05em;
+				width:			0.85em;
+				height:			0.85em;
+				margin-right:	0.3em;
+				text-align:		center;
+				border-radius:	50%;
+			}
+			.project-feature:after {
+				content:	"";
+				display:	block;
+				position:	absolute;
+				top:		50%;
+				margin-top:	-0.385em;
+				left:		0.35em;
+				width:		0.2em;
+				height:		0.5em;
+				border-bottom:	solid 1px #000;
+				border-right:	solid 1px #000;
+				-webkit-transform:	rotate(45deg);
+				transform:			rotate(45deg);
+			}
+
+	.project-links {
+		margin:	0;
+	}
+
+	#example-link {
+		display: 	inline-block;
+		margin:		1.2em 0 0.9em 0;
+		padding:	0 0.8em;
+		border:		solid 2px #5856d6;
+		color:				#fff;
+		background:			#5856d6;
+		text-decoration:	none;
+		line-height:		2;
+		transition:			all 0.2s;
+	}
+		#example-link:hover,
+		#example-link:focus {
+			background:	#fff;
+			color:		#5856d6;
+		}
+		#example-link:active {
+			background:		#000;
+			border-color:	#000;
+			color:			#fff;
+		}
+
+main {
+	margin-top:		1.6em;
+	margin-bottom:	0.9em;
+	padding:		1.2em;
+	border:			solid 1px #000;
+}
+	main > :first-child {
+		margin-top:		0;
+	}
+	main > :last-child {
+		margin-bottom:	0;
+	}
+
+footer {
+}
+	.imprint {
+		margin:		0;
+		font-size:	0.85em;
+	}
+
+/* Modal */
+.example-content {
+}
+	.js .example-content {
+		display:	none;
+	}
+		.modal .example-content {
+			display:	block;
+		}
+
+	.example-content__content {
+		padding:	1.6em;
+		box-sizing:	border-box;
+		background:	#000;
+		background:	rgba(0,0,0,0.75);
+		color:		#fff;
+	}
+		.example-content__content h2 {
+			margin-top:		0;
+			margin-bottom:	0.8em;
+			font-size:		1.6em;
+			font-weight:	bold;
+		}
+			.example-content__content h2:after {
+				content:	"";
+				display:	block;
+				margin-top:	0.4em;
+				width:		2em;
+				height:		0.2em;
+				background:	#5856d6;
+			}
+
+		.example-content__content a {
+			color:	#9697f4;
+		}
+		.example-content__content .credits {
+			padding-top:	0.6em;
+			border-top:		solid 1px #fff;
+			opacity:		0.5;
+		}
+
+	.example-content .image {
+		overflow:	hidden;
+		margin:		0;
+		background:	#222;
+	}
+
+		.example-content .image img {
+			display:	block;
+			width:		100%;
+			height:		auto;
+		}
+
+		@supports (object-fit: fill) {
+			.example-content .image img {
+				width:		100%;
+				height:		100%;
+				object-fit:	fill;
+			}
+		}
+
+	@media (min-width: 550px) {
+		.example-content__content {
+			position:	absolute;
+			top:		0;
+			right:		0;
+			width:		30%;
+			height:		100%;
+			overflow-y:	auto;
+			-webkit-overflow-scrolling:	touch;
+		}
+	}

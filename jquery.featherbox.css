@@ -1,0 +1,113 @@
+@charset "UTF-8";
+/*! Featherbox 0.4 | github.com/adamaveray/featherbox | Adam Averay | MIT */
+
+.modal-container,
+.modal {
+	-webkit-transition:	all 0.5s;
+	-moz-transition:	all 0.5s;
+	-ms-transition:		all 0.5s;
+	-o-transition:		all 0.5s;
+	transition:			all 0.5s;
+}
+
+.modal-container {
+	position:	fixed;
+	top:		0;
+	left:		0;
+	right:		0;
+	bottom:		0;
+	padding:	1.2em;
+	overflow:	auto;
+	z-index:	1001;
+	background:		#000;
+	background:		rgba(0,0,0,0.75);
+	letter-spacing:	-0.325em;
+	text-align:		center;
+	-webkit-backdrop-filter:	blur(5px) saturate(20%);
+	backdrop-filter:			blur(5px) saturate(20%);
+}
+	/* Transitioning */
+	.modal-container.__transitioning {
+		opacity:	0;
+	}
+		.__transitioning .modal {
+			transform:		scale(0.9);
+			-webkit-filter:	blur(3px);
+			filter:			blur(3px);
+			opacity:		0;
+		}
+
+	/* Vertical-centring support element */
+	.modal-container:before {
+		content:	"";
+		display:	inline-block;
+		width:		0;
+		height:		100%;
+		vertical-align:	middle;
+	}
+
+	/* Modal content */
+	.modal {
+		position:	relative;
+		display:	inline-block;
+		width:		100%;
+		margin:		0 auto;
+		max-width:	1150px;
+		vertical-align:	middle;
+		letter-spacing:	0;
+		text-align:		left;
+		/*background:		#fff;*/
+	}
+
+	.modal__close {
+		display:	block;
+		position:	absolute;
+		top:		0.5em;
+		right:		0.5em;
+		width:		1.7em;
+		height:		1.7em;
+		border:		none;
+		z-index:	2;
+		background:		none;
+		text-indent:	150%;
+		white-space:	nowrap;
+		-webkit-appearance:	none;
+		-moz-appearance:	none;
+		opacity:		0.5;
+		-webkit-transition:	opacity 0.3s;
+		-moz-transition:	opacity 0.3s;
+		-ms-transition:		opacity 0.3s;
+		-o-transition:		opacity 0.3s;
+		transition:			opacity 0.3s;
+	}
+		.modal__close:hover,
+		.modal__close:focus {
+			opacity:	1;
+		}
+		.modal__close:after {
+			content:	" ×";
+			position:	absolute;
+			top:		0;
+			left:		0;
+			width:		100%;
+			height:		100%;
+			text-align:		center;
+			color:			#fff;
+			font-size:		3em;
+			line-height:	0.5;
+			border-radius:	50%;
+			text-indent:	0;
+		}
+
+@media only screen and (max-width: 699px) {
+	/* Condense on small screens */
+	.modal {
+		width:		100%;
+		margin-top:	1.8em;
+	}
+
+		.modal__close {
+			top:	-2.2em;
+			right:	-0.2em;
+		}
+}

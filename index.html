@@ -1,0 +1,79 @@
+<!doctype html>
+<html class="no-js" lang="en-AU">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="x-ua-compatible" content="ie=edge" />
+	<title>Featherbox jQuery Modal &amp; Lightbox</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="jquery.featherbox.css" />
+	<link rel="stylesheet" href="demo.css" />
+	<script>document.children[0].className='js';</script>
+</head>
+<body>
+	<header class="project-overview">
+		<img class="project-logo" src="logo.svg" alt="Featherbox" />
+		<h1 class="project-name">Featherbox</h1>
+
+		<p class="project-summary">A lightweight, simple to customise modal/lightbox jQuery plugin with arguably aesthetically-pleasing default styles.</p>
+		<ul class="project-features">
+			<li class="project-feature">Modern styles</li>
+			<li class="project-feature">Customisable</li>
+			<li class="project-feature">IE8-compatible</li>
+		</ul>
+
+		<a href="#example" id="example-link">View Demo</a>
+
+		<p class="project-links"><a class="cta cta--source" href="https://github.com/adamaveray/featherbox">View on Github</a></p>
+	</header>
+
+	<main>
+		<h2>Usage</h2>
+
+		<pre><code>$('.modal-content').clone().featherbox();</code></pre>
+
+		<p><a href="https://github.com/adamaveray/featherbox">View full examples and options</a></p>
+	</main>
+
+	<footer>
+		<p class="imprint"><a href="https://twitter.com/adamaveray" target="_blank" rel="author">@adamaveray</a> • <a href="https://github.com/adamaveray/featherbox/blob/master/LICENSE">MIT License</a></p>
+	</footer>
+
+	<div id="example" class="example-content">
+		<figure class="image">
+			<img
+				srcset="https://placem.at/places?w=850&amp;h=566&amp;txt=0&amp;random=featherbox 800w, https://placem.at/places?w=600&amp;h=400&amp;txt=0&amp;random=featherbox 600w, https://placem.at/places?w=400&amp;h=266&amp;txt=0&amp;random=featherbox 400w"
+				src="https://placem.at/places?w=1200&amp;h=800&amp;txt=0&amp;random=featherbox"
+			/>
+		</figure>
+
+		<div class="example-content__content">
+			<h2>Example Modal</h2>
+			<p>This is an example HTML modal. Any content can be added to a modal, including images, videos and iframes.</p>
+			<p>Featherbox provides the wrapping modal styles and infrastructure, the contents of the modal are left to be styled by the user. For example, this modal is styled with roughly <a href="demo.css" target="_blank">70 lines of CSS</a>.</p>
+			<p><a href="https://github.com/adamaveray/featherbox">See the Github repository</a> to download Featherbox or view more examples and full documentation.</p>
+
+			<p class="credits"><small>Image provided by <a href="https://placem.at/" target="_blank" rel="nofollow">Placemat</a>.</small></p>
+		</div>
+	</div>
+
+	<!--[if lt IE 9]><script src="https://code.jquery.com/jquery-1.12.1.min.js"></script><![endif]-->
+	<!--[if gte IE 9]><!-- ><script src="https://code.jquery.com/jquery-2.2.2.min.js"></script><!--<![endif]-->
+	<script>window.jQuery || document.write('<script src="jquery-1.12.2.min.js"><\/script>')</script>
+	<script src="jquery.featherbox.js"></script>
+	<script>
+		(function($){
+			$(document.getElementById('example-link')).on('click', function(e){
+				e.preventDefault();
+
+				// Locate content
+				var $link	= $(this),
+					target	= document.getElementById($link.attr('href').substr(1));
+
+				// Display Featherbox
+				var $content	= $(target).clone();
+				$content.featherbox();
+			});
+		}(jQuery));
+	</script>
+</body>
+</html>
