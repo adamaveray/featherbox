@@ -384,4 +384,4 @@
 		var modal	= new Featherbox(this, options);
 		return $(this).data('featherbox', modal);
 	};
-}(jQuery));
+}(window.jQuery));
