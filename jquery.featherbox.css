@@ -1,11 +1,10 @@
 @charset "UTF-8";
-/*! Featherbox 0.4 | github.com/adamaveray/featherbox | Adam Averay | MIT */
+/*! Featherbox 0.5 | github.com/adamaveray/featherbox | Adam Averay | MIT */
 
 .modal-container,
 .modal {
 	-webkit-transition:	all 0.5s;
 	-moz-transition:	all 0.5s;
-	-ms-transition:		all 0.5s;
 	-o-transition:		all 0.5s;
 	transition:			all 0.5s;
 }
@@ -56,27 +55,31 @@
 		vertical-align:	middle;
 		letter-spacing:	0;
 		text-align:		left;
-		/*background:		#fff;*/
 	}
 
 	.modal__close {
 		display:	block;
 		position:	absolute;
-		top:		0.5em;
-		right:		0.5em;
-		width:		1.7em;
-		height:		1.7em;
+		top:		0.25em;
+		right:		0.25em;
+		width:		0.45em;
+		height:		0.45em;
+		padding:	0;
 		border:		none;
 		z-index:	2;
-		background:		none;
+		overflow:	hidden;
+		font-size:		3.2em;
+		line-height:	1;
 		text-indent:	150%;
 		white-space:	nowrap;
+		opacity:		0.5;
+		font-family:	Arial, sans-serif;	/* Widely available with standard line-height */
+		font-weight:	normal;
+		background:		none;
 		-webkit-appearance:	none;
 		-moz-appearance:	none;
-		opacity:		0.5;
 		-webkit-transition:	opacity 0.3s;
 		-moz-transition:	opacity 0.3s;
-		-ms-transition:		opacity 0.3s;
 		-o-transition:		opacity 0.3s;
 		transition:			opacity 0.3s;
 	}
@@ -93,10 +96,8 @@
 			height:		100%;
 			text-align:		center;
 			color:			#fff;
-			font-size:		3em;
-			line-height:	0.5;
-			border-radius:	50%;
-			text-indent:	0;
+			line-height:	0.45;
+			text-indent:	-0.05em;
 		}
 
 @media only screen and (max-width: 699px) {
@@ -107,7 +108,7 @@
 	}
 
 		.modal__close {
-			top:	-2.2em;
-			right:	-0.2em;
+			top:	-0.6em;
+			right:	0;
 		}
 }
