@@ -46,6 +46,9 @@
 		handlerClick:	null,
 		handlerKeydown:	null,
 
+		/**
+		 * Builds the modal element (does not insert in document or display)
+		 */
 		create:	function(){
 			var _this	= this;
 
@@ -83,6 +86,11 @@
 			}, 0);
 		},
 
+		/**
+		 * Appends and shows the modal to the body, optionally transitioning in
+		 *
+		 * @param {bool} [animate=true]	Whether to trigger CSS classes for transitioning in
+		 */
 		show:	function(animate){
 			(animate === undefined) && (animate = true);
 
@@ -117,10 +125,16 @@
 					show();
 				}, 0);
 			} else {
+				// No animation - display immediately
 				show();
 			}
 		},
 
+		/**
+		 * Removes the modal from the document, optionally transitioning out before removal
+		 *
+		 * @param {bool} [animate=true]	Whether to trigger CSS classes for transitioning out
+		 */
 		close:	function(animate){
 			(animate === undefined) && (animate = true);
 
@@ -150,12 +164,15 @@
 
 				$modal.addClass(className);
 				this._onTransitionEnd($modal, remove);
-				// window.setTimeout(remove, 500);
 			} else {
+				// No animation - remove immediately
 				remove();
 			}
 		},
 
+		/**
+		 * Removes the modal from the document and clears any references to modal elements
+		 */
 		destroy:	function(){
 			this._clearCloseOnClick();
 			this._clearCloseOnEscape();
@@ -174,6 +191,13 @@
 			this.$element	= null;
 		},
 
+		/**
+		 * Executes a function after CSS transitions have completed on the given modal element
+		 *
+		 * @param {$} $modal	The element to wait for transition end
+		 * @param {Function} fn	A function to call after transitioning has completed
+		 * @private
+		 */
 		_onTransitionEnd:		function($modal, fn){
 			var event	= this._getTransitionEvent($modal[0]);
 			if(!event){
@@ -186,6 +210,13 @@
 				fn();
 			});
 		},
+		/**
+		 * Detects the transition-end event name for the current browser if supported
+		 *
+		 * @param {Element} element	A HTML element
+		 * @return {string|null}	The transition-end event name, or null if not supported
+		 * @private
+		 */
 		_getTransitionEvent:	function(element){
 			var transitions = {
 				'transition':		'transitionend',
@@ -194,13 +225,24 @@
 				'WebkitTransition':	'webkitTransitionEnd'
 			};
 
+			// Find supported event
 			for(t in transitions){	if(!transitions.hasOwnProperty(t)){ continue; }
 				if(element.style[t] !== undefined){
 					return transitions[t];
 				}
 			}
+
+			// Transition events not supported
+			return null;
 		},
 
+		/**
+		 * Triggers a jQuery event on the original content element
+		 *
+		 * @param {string} event	The name of the event (will be prefixed with 'featherbox')
+		 * @param {Array} [params]	Additional custom params to pass to event listeners (`this` will be the prepended)
+		 * @private
+		 */
 		_trigger:	function(event, params){
 			event	= 'featherbox'+event;
 			params	= params || [];
@@ -210,6 +252,14 @@
 			this.$element.trigger(event, params);
 		},
 
+		/**
+		 * Executes a function after all specified descendant elements have finished loading
+		 *
+		 * @param {$} $element			The jQuery element
+		 * @param {string} selector		The selector for elements capable of triggering a 'load' event
+		 * @param {Function} callback	A function to execute after all found elements have loaded
+		 * @private
+		 */
 		_waitForLoad:		function($element, selector, callback){
 			// Locate loadable elements
 			var $loadable	= this.$modal.find(selector)
@@ -234,6 +284,12 @@
 				}
 			});
 		},
+		/**
+		 * Sets up event handlers for dismissing the modal on overlay background or close button click
+		 *
+		 * @see _clearCloseOnClick
+		 * @private
+		 */
 		_closeOnClick:		function(){
 			var _this	= this;
 
@@ -262,6 +318,12 @@
 
 			$body.on('click', handler);
 		},
+		/**
+		 * Clears handlers set by `_closeOnClick`
+		 *
+		 * @see _closeOnClick
+		 * @private
+		 */
 		_clearCloseOnClick:	function(){
 			if(!this.handlerClick){
 				// Nothing to clear
@@ -274,6 +336,12 @@
 
 			$body.off('click', handler);
 		},
+		/**
+		 * Sets up event handlers for dismissing the modal on escape key presses
+		 *
+		 * @see _clearCloseOnEscape
+		 * @private
+		 */
 		_closeOnEscape:			function(){
 			var keyCode	= 27;	// Escape key
 
@@ -291,6 +359,12 @@
 
 			$window.on('keydown', handler);
 		},
+		/**
+		 * Clears handlers set by `_closeOnEscape`
+		 *
+		 * @see _closeOnEscape
+		 * @private
+		 */
 		_clearCloseOnEscape:	function(){
 			if(!this.handlerKeydown){
 				// Nothing to clear
