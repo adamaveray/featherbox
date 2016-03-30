@@ -71,7 +71,22 @@
 
 				// Display Featherbox
 				var $content	= $(target).clone();
-				$content.featherbox();
+				$content.featherbox({ autoShow: false });
+
+				// Show loader
+				var $loader	= $(document.createElement('div')).addClass('content-loading').text('Loading');
+				$loader
+					.hide()
+					.appendTo(document.body)
+					.fadeIn('slow');
+
+				$content.first().one('featherboxLoad', function(){
+					var featherbox	= $(this).data('featherbox');
+					$loader.fadeOut('fast', function(){
+						$(this).remove();
+						featherbox.show();
+					});
+				});
 			});
 		}(jQuery));
 	</script>
