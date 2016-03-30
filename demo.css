@@ -47,6 +47,7 @@ pre > code {
 header,
 main,
 footer {
+	width:		100%; /* IE... */
 	max-width:	500px;
 	margin:		0 auto;
 	box-sizing:	border-box;
