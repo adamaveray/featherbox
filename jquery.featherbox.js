@@ -17,6 +17,7 @@
 	Featherbox.defaults	= {
 		// Operation
 		autoShow:	true,
+		modal:		false,
 
 		// Animation
 		transitionOpenClass:	'__transitioning',
@@ -80,9 +81,13 @@
 			});
 
 			// Monitor close events
+			var isModal	= this.options.modal;
 			window.setTimeout(function(){
-				_this._closeOnClick();
-				_this._closeOnEscape();
+				_this._closeOnClick(!isModal);	// Only include background clicks when not modal
+				if(!isModal){
+					// Only allow closing on escape key when not modal
+					_this._closeOnEscape();
+				}
 			}, 0);
 		},
 
@@ -287,10 +292,11 @@
 		/**
 		 * Sets up event handlers for dismissing the modal on overlay background or close button click
 		 *
+		 * @param {bool} [includeBackground=true]	Whether clicks on the background should close the modal
 		 * @see _clearCloseOnClick
 		 * @private
 		 */
-		_closeOnClick:		function(){
+		_closeOnClick:		function(includeBackground){
 			var _this	= this;
 
 			this._clearCloseOnClick();
@@ -301,10 +307,10 @@
 					return;
 				}
 
-				if($.contains(_this.$modal[0], e.target)){
-					// Clicking on modal
-					if(e.target !== _this.$modal[0] && e.target !== _this.$close[0]){
-						// Not clicking on background or close button - clicking on modal content - ignore click
+				if(!includeBackground || e.target !== _this.$modal[0]){
+					// Not a background click or background click ignored - test for close button click
+					if(e.target !== _this.$close[0]){
+						// Not clicking on close button - clicking on modal content - ignore click
 						return;
 					}
 				}

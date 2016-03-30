@@ -43,6 +43,8 @@ Options
 
 - **bool `autoShow`:** [default: `true`] Whether to launch the modal upon creation
 
+- **bool `modal`:** [default: `false`] Whether to behave as a modal (background clicks and escape key dismissal disabled, only closed by close button clicks or API)
+
 - **string `transitionOpenClass`:** [default: `__transitioning`] A class applied to new modals, then removed to trigger entrance transition
 
 - **string `transitionCloseClass`:** [default: `__transitioning`] A class applied to modals before removing to trigger exit transition
