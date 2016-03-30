@@ -1,5 +1,5 @@
 /*! Featherbox 0.4 | github.com/adamaveray/featherbox | Adam Averay | MIT */
-(function($){
+;(function($){
 	var $window	= $(window),
 		$body	= $('body');
 
